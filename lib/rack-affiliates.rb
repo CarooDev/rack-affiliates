@@ -12,6 +12,7 @@ module Rack
     def initialize(app, opts = {})
       @app = app
       @param = opts[:param] || "ref"
+      @from = opts[:from] || "s"
       @cookie_ttl = opts[:ttl] || 60*60*24*30  # 30 days
       @cookie_domain = opts[:domain] || nil
     end
@@ -52,7 +53,7 @@ module Rack
     end
 
     def params_info(req)
-      [req.params[@param], req.env["HTTP_REFERER"], Time.now.to_i]
+      [req.params[@param], req.params[@from], Time.now.to_i]
     end
 
     def cookie_info(req)

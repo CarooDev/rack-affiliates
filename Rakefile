@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/alexlevin/rack-affiliates"
   gem.license = "MIT"
   gem.summary = %Q{Tracks referrals came via an affiliated links.}
-  gem.description = %Q{If the user clicked through from an affiliated site, this middleware will track affiliate tag, referring url and time.} 
+  gem.description = %Q{If the user clicked through from an affiliated site, this middleware will track affiliate tag, referring url and time.}
   gem.email = "experiment17@gmail.com"
   gem.authors = ["Alex Levin"]
 end
@@ -29,14 +29,6 @@ Rake::TestTask.new(:spec) do |test|
   test.libs << 'lib' << 'spec'
   test.pattern = 'spec/**/*_spec.rb'
   test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'spec'
-  test.pattern = 'spec/**/*_spec.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
 end
 
 task :default => :spec
