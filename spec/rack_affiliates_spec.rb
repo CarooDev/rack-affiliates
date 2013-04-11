@@ -17,7 +17,7 @@ describe "RackAffiliates" do
   it "should set affiliate info from params" do
     Timecop.freeze do
       @time = Time.now
-      get '/', { 'ref' => '123', 's' => 'abc', 'request_ids' => "123,456" }
+      get '/', { 'ref' => '123', 'm' => 'abc', 'request_ids' => "123,456" }
     end
 
     last_request.env['affiliate.tag'].must_equal "123"
@@ -29,7 +29,7 @@ describe "RackAffiliates" do
   it "should save affiliate info in a cookie" do
     Timecop.freeze do
       @time = Time.now
-      get '/', { 'ref' => '123', 's' => 'abc', 'request_ids' => "123,456" }
+      get '/', { 'ref' => '123', 'm' => 'abc', 'request_ids' => "123,456" }
     end
 
     rack_mock_session.cookie_jar["aff_tag"].must_equal "123"
@@ -81,7 +81,7 @@ describe "RackAffiliates" do
     it "should use newer affiliate from params" do
       Timecop.freeze(60*60*24) do #1 day later
         @new_time = Time.now
-        get '/', { 'ref' => 456, 's' => 'def', 'request_ids' => "111,222" }
+        get '/', { 'ref' => 456, 'm' => 'def', 'request_ids' => "111,222" }
       end
 
       rack_mock_session.cookie_jar["aff_tag"].must_equal "456"

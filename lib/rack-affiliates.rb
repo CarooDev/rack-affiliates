@@ -13,7 +13,7 @@ module Rack
     def initialize(app, opts = {})
       @app = app
       @param = opts[:param] || "ref"
-      @from = opts[:from] || "s"
+      @from = opts[:from] || "m"
       @fb_request_ids = opts[:fb_request_ids] || "request_ids"
       @cookie_ttl = opts[:ttl] || 60*60*24*30  # 30 days
       @cookie_domain = opts[:domain] || nil
